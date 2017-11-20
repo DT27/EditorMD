@@ -95,7 +95,7 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
 
                 var html = filterXSS('<img src=1 onerror=alert(document.cookie)> <img src=http://x.h4rdy.me/sake>');
                 alert(html);
-                var originalContent = filterXSS($('#text').html());
+                var originalContent = filterXSS($('#text').html().replace('&lt;','<').replace('&gt;','>'));
                 alert(originalContent);
                 $('#text').html(originalContent);
 
