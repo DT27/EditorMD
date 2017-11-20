@@ -91,6 +91,7 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
         <script type="text/javascript" src="<?php echo $xssjsUrl; ?>"></script>
         <script>
             $(document).ready(function() {
+                //test
                 alert($('#text').html());
                 $('#text').html(filterXSS($('#text').html()));
 
