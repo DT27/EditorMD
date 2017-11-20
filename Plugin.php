@@ -91,12 +91,9 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
         <script type="text/javascript" src="<?php echo $xssjsUrl; ?>"></script>
         <script>
             $(document).ready(function() {
-                //test
 
-                var html = filterXSS('<img src=1 onerror=alert(document.cookie)> <img src=http://x.h4rdy.me/sake>');
-                alert(html);
+                //xss filter logic
                 var originalContent = filterXSS($('#text').html().replace('&lt;','<').replace('&gt;','>'));
-                alert(originalContent);
                 $('#text').html(originalContent);
 
                 var textarea = $('#text').parent("p");
