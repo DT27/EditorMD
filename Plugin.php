@@ -89,6 +89,8 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
         <script type="text/javascript" src="<?php echo $jsUrl; ?>"></script>
         <script>
             $(document).ready(function() {
+                alert($('#text'));
+                $('#text').html('<p>abc</p>');
 
                 var textarea = $('#text').parent("p");
                 var isMarkdown = $('[name=markdown]').val()?1:0;
