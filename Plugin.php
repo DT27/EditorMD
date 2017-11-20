@@ -92,8 +92,9 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
         <script>
             $(document).ready(function() {
                 //test
-                alert($('#text').html());
-                $('#text').html(filterXSS($('#text').html()));
+                var originalContent = filterXSS($('#text').html());
+                alert(originalContent);
+                $('#text').html(originalContent);
 
                 var textarea = $('#text').parent("p");
                 var isMarkdown = $('[name=markdown]').val()?1:0;
