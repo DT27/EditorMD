@@ -201,8 +201,8 @@ function safeAttrValue (tag, name, value, cssFilter) {
 }
 
 // 正则表达式
-var REGEXP_LT = /</g;
-var REGEXP_GT = />/g;
+var REGEXP_LT = /<|&lt;/g;
+var REGEXP_GT = />|&gt;/g;
 var REGEXP_QUOTE = /"/g;
 var REGEXP_QUOTE_2 = /&quot;/g;
 var REGEXP_ATTR_VALUE_1 = /&#([a-zA-Z0-9]*);?/img;
