@@ -512,20 +512,21 @@ function parseTag (html, onTag, escapeHtml) {
   // 逐个分析字符
   for (currentPos = 0; currentPos < len; currentPos++) {
     var c = html.charAt(currentPos);
+    var fourChars = currentPos<len-4 ? html.substring(currentPos, currentPos+4) : "";
     if (tagStart === false) {
-      if (c === '<' || c === '&lt;' ) {
+      if (c === '<' || fourChars === '&lt;' ) {
         tagStart = currentPos;
         continue;
       }
     } else {
       if (quoteStart === false) {
-        if (c === '<' || c === '&lt;' ) {
+        if (c === '<' || fourChars === '&lt;' ) {
           rethtml += escapeHtml(html.slice(lastPos, currentPos));
           tagStart = currentPos;
           lastPos = currentPos;
           continue;
         }
-        if (c === '>' || c === '&gt;' ) {
+        if (c === '>' || fourChars === '&gt;' ) {
           rethtml += escapeHtml(html.slice(lastPos, tagStart));
           currentHtml = html.slice(tagStart, currentPos + 1);
           currentTagName = getTagName(currentHtml);
