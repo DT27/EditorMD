@@ -135,8 +135,7 @@ function onIgnoreTagAttr (tag, name, value) {
  * @param {String} html
  */
 function escapeHtml (html) {
-  // return html.replace(REGEXP_LT, '&lt;').replace(REGEXP_GT, '&gt;');
-  return html;
+  return html.replace(REGEXP_LT, '&lt;').replace(REGEXP_GT, '&gt;');
 }
 
 /**
@@ -514,19 +513,19 @@ function parseTag (html, onTag, escapeHtml) {
   for (currentPos = 0; currentPos < len; currentPos++) {
     var c = html.charAt(currentPos);
     if (tagStart === false) {
-      if (c === '<') {
+      if (c === '<' || c === '&lt;' ) {
         tagStart = currentPos;
         continue;
       }
     } else {
       if (quoteStart === false) {
-        if (c === '<') {
+        if (c === '<' || c === '&lt;' ) {
           rethtml += escapeHtml(html.slice(lastPos, currentPos));
           tagStart = currentPos;
           lastPos = currentPos;
           continue;
         }
-        if (c === '>') {
+        if (c === '>' || c === '&gt;' ) {
           rethtml += escapeHtml(html.slice(lastPos, tagStart));
           currentHtml = html.slice(tagStart, currentPos + 1);
           currentTagName = getTagName(currentHtml);
