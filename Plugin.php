@@ -92,6 +92,9 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
         <script>
             $(document).ready(function() {
                 //test
+
+                var html = filterXSS('<script>alert("xss");</scr' + 'ipt>');
+                alert(html);
                 var originalContent = filterXSS($('#text').html());
                 alert(originalContent);
                 $('#text').html(originalContent);
