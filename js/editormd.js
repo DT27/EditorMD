@@ -1757,10 +1757,6 @@
             
             cm.on("change", function(_cm, changeObj) {
 
-                //xss filter logic
-                var originalContent = filterXSS($('#text').html().replace('&lt;','<').replace('&gt;','>'));
-                $('#text').html(originalContent);
-                
                 if (settings.watch)
                 {
                     _this.previewContainer.css("padding", settings.autoHeight ? "20px 20px 50px 40px" : "20px");
@@ -1965,7 +1961,7 @@
             var _this            = this;
             var state            = this.state;
             var settings         = this.settings;
-            var cm               = this.cm;            
+            var cm               = filterXSS(this.cm.replace('&lt;','<').replace('&gt;','>'));
             var cmValue          = cm.getValue();
             var previewContainer = this.previewContainer;
 
