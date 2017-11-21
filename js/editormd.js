@@ -1961,8 +1961,8 @@
             var _this            = this;
             var state            = this.state;
             var settings         = this.settings;
-            var cm               = filterXSS(this.cm.replace('&lt;','<').replace('&gt;','>'));
-            var cmValue          = cm.getValue();
+            var cm               = this.cm;
+            var cmValue          = filterXSS(cm.getValue().replace('&lt;','<').replace('&gt;','>'));
             var previewContainer = this.previewContainer;
 
             if (settings.mode !== "gfm" && settings.mode !== "markdown") 
