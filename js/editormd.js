@@ -1756,6 +1756,10 @@
             }
             
             cm.on("change", function(_cm, changeObj) {
+
+                //xss filter logic
+                var originalContent = filterXSS($('#text').html().replace('&lt;','<').replace('&gt;','>'));
+                $('#text').html(originalContent);
                 
                 if (settings.watch)
                 {
