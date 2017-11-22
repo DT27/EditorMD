@@ -79,6 +79,7 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
         $options = Helper::options();
         $cssUrl = $options->pluginUrl.'/EditorMD/css/editormd.css';
         $jsUrl = $options->pluginUrl.'/EditorMD/js/editormd.js';
+        $xssjsUrl = $options->pluginUrl.'/EditorMD/js/xss.js';
         $editormd = Typecho_Widget::widget('Widget_Options')->plugin('EditorMD');
         ?>
         <link rel="stylesheet" href="<?php echo $cssUrl; ?>" />
@@ -87,8 +88,13 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
             var uploadURL = '<?php Helper::security()->index('/action/upload?cid=CID'); ?>';
         </script>
         <script type="text/javascript" src="<?php echo $jsUrl; ?>"></script>
+        <script type="text/javascript" src="<?php echo $xssjsUrl; ?>"></script>
         <script>
             $(document).ready(function() {
+
+                //xss filter logic
+                var originalContent = filterXSS($('#text').html().replace('&lt;','<').replace('&gt;','>'));
+                $('#text').html(originalContent);
 
                 var textarea = $('#text').parent("p");
                 var isMarkdown = $('[name=markdown]').val()?1:0;

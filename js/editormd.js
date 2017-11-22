@@ -1756,7 +1756,7 @@
             }
             
             cm.on("change", function(_cm, changeObj) {
-                
+
                 if (settings.watch)
                 {
                     _this.previewContainer.css("padding", settings.autoHeight ? "20px 20px 50px 40px" : "20px");
@@ -1961,8 +1961,8 @@
             var _this            = this;
             var state            = this.state;
             var settings         = this.settings;
-            var cm               = this.cm;            
-            var cmValue          = cm.getValue();
+            var cm               = this.cm;
+            var cmValue          = filterXSS(cm.getValue().replace('&lt;','<').replace('&gt;','>'));
             var previewContainer = this.previewContainer;
 
             if (settings.mode !== "gfm" && settings.mode !== "markdown") 
